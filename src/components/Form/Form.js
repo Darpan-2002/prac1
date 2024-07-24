@@ -64,15 +64,15 @@ const Form = () => {
           value={age === 0 ? "" : age}
           onChange={(e) => setAge(e.target.value)}
         /> 
-        <label htmlFor="gender">Current Status</label>
+        <label htmlFor="status">Current Status</label>
         <select
-          id="gender"
-          name="gender"
+          id="status"
+          name="status"
           required
           onChange={(e) => setGender(e.target.value)}
           value={gender === 0 ? "" : gender}
         >
-          <option value="">Select Gender</option>
+         
           <option value="Will be disbursed">Will be disbursed</option>
           <option value="Partially disbursed">Partially disbursed</option>
           <option value="Fully disbursed">Fully disbursed</option>

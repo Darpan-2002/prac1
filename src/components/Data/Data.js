@@ -1,7 +1,7 @@
 import React from "react";
 import "./data.css";
+import { useSelector, useDispatch } from "react-redux";
 import { dataBookSelector } from "../../store/selectors";
-import { useDispatch, useSelector } from "react-redux";
 import { deleteData } from "../../store/interactions";
 
 const Data = () => {
@@ -10,6 +10,7 @@ const Data = () => {
   const provider = useSelector((state) => state.provider.connection);
   const medical = useSelector((state) => state.medical.contract);
   const dispatch = useDispatch();
+
   const deleteHandler = (e, data) => {
     if (window.confirm("Do you want to delete the record?")) {
       deleteData(medical, data.recordId, dispatch, provider);
@@ -17,43 +18,37 @@ const Data = () => {
       console.log("Data not delete");
     }
   };
+
   return (
     <div>
       {account ? (
-        <div>
-          <table>
-            <thead>
-              <tr>
-                <th>Record ID</th>
-                <th>Data and Time</th>
-                <th>Project Name</th>
-                <th>Amount</th>
-                {/* <th>Gender</th> */}
-                <th>Fund Type</th>
-                <th>Hospital Name</th>
-                <th>Project Details</th>
-                {/* <th>Treatment</th> */}
-              </tr>
-            </thead>
-            <tbody>
-              {orderData &&
-                orderData.map((data, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>{data.formattedTimestamp}</td>
-                      <td>{data.name}</td>
-                      <td>{data.ageNew} </td>
-                      {/* <td>{data.gender}</td> */}
-                      <td>{data.bloodType}</td>
-                      <td>{data.allergies}</td>
-                      <td>{data.diagnosis}</td>
-                      {/* <td>{data.treatment}</td> */}
-                    </tr>
-                  );
-                })}
-            </tbody>
-          </table>
+        <div className="hello">
+          <div className="data-grid">
+            <div className="grid-header">Record ID</div>
+            <div className="grid-header">Data and Time</div>
+            <div className="grid-header">Project Name</div>
+            <div className="grid-header">Amount</div>
+            {/* <div className="grid-header">Gender</div> */}
+            <div className="grid-header">Fund Type</div>
+            <div className="grid-header">Hospital Name</div>
+            <div className="grid-header">Project Details</div>
+            {/* <div className="grid-header">Treatment</div> */}
+
+            {orderData &&
+              orderData.map((data, index) => (
+                <React.Fragment key={index}>
+                  <div className="grid-item">{index + 1}</div>
+                  <div className="grid-item">{data.formattedTimestamp}</div>
+                  <div className="grid-item">{data.name}</div>
+                  <div className="grid-item">{data.ageNew}</div>
+                  {/* <div className="grid-item">{data.gender}</div> */}
+                  <div className="grid-item">{data.bloodType}</div>
+                  <div className="grid-item">{data.allergies}</div>
+                  <div className="grid-item">{data.diagnosis}</div>
+                  {/* <div className="grid-item">{data.treatment}</div> */}
+                </React.Fragment>
+              ))}
+          </div>
         </div>
       ) : (
         <h1>Connect the account</h1>
