@@ -25,14 +25,14 @@ const Data = () => {
         <div className="hello">
           <div className="data-grid">
             <div className="grid-header">Record ID</div>
-            <div className="grid-header">Data and Time</div>
+            <div className="grid-header">Date and Time</div>
             <div className="grid-header">Project Name</div>
             <div className="grid-header">Amount</div>
             {/* <div className="grid-header">Gender</div> */}
             <div className="grid-header">Fund Type</div>
             <div className="grid-header">Hospital Name</div>
             <div className="grid-header">Project Details</div>
-            {/* <div className="grid-header">Treatment</div> */}
+            {/* <div className="grid-header">Treatment Plan</div> */}
 
             {orderData &&
               orderData.map((data, index) => (
